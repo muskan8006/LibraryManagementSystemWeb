@@ -1,5 +1,0 @@
-com\library\model\Book.class
-com\library\controller\BookController.class
-com\library\dao\BookDAO.class
-com\library\Application.class
-com\library\util\DBConnection.class
