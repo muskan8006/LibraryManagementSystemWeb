@@ -1,28 +1,29 @@
 package com.library.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "books")
 public class Book {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String title;
+
     private String author;
-    private int quantity;
-    private boolean available;
+
+    private double price;
 
     public Book() {
     }
 
-    public Book(int id, String title, String author, int quantity, boolean available) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.quantity = quantity;
-        this.available = available;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,29 +43,11 @@ public class Book {
         this.author = author;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public double getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-        this.available = quantity > 0;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    @Override
-    public String toString() {
-        return "Book ID: " + id +
-                ", Title: " + title +
-                ", Author: " + author +
-                ", Quantity: " + quantity +
-                ", Available: " + (available ? "Yes" : "No");
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

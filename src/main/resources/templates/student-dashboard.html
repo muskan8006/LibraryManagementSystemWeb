@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Dashboard</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            background:#eef2ff;
+        }
+
+        .navbar{
+            background:#2563eb;
+            color:white;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .navbar h1{
+            font-size:35px;
+        }
+
+        .logout-btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:10px;
+            background:white;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .container{
+            width:90%;
+            margin:auto;
+            margin-top:40px;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 10px 20px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h2{
+            margin-bottom:20px;
+            font-size:30px;
+        }
+
+        .btn{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:12px;
+            font-size:20px;
+            font-weight:bold;
+            cursor:pointer;
+            color:white;
+        }
+
+        .blue{
+            background:#2563eb;
+        }
+
+        .green{
+            background:#16a34a;
+        }
+
+        .black{
+            background:#111827;
+        }
+
+        .purple{
+            background:#7c3aed;
+        }
+
+        input{
+            width:100%;
+            padding:15px;
+            border-radius:10px;
+            border:1px solid #ccc;
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <h1>🎓 Student Dashboard</h1>
+
+    <a href="/">
+        <button class="logout-btn">
+            Logout
+        </button>
+    </a>
+
+</div>
+
+<div class="container">
+
+    <div class="cards">
+
+        <!-- VIEW BOOKS -->
+        <div class="card">
+
+            <h2>📚 View Books</h2>
+
+            <a href="/books">
+                <button class="btn blue">
+                    View All Books
+                </button>
+            </a>
+
+        </div>
+
+        <!-- SEARCH BOOKS -->
+        <div class="card">
+
+            <h2>🔍 Search Books</h2>
+
+            <form action="/student/search" method="get">
+
+                <input type="text"
+                       name="keyword"
+                       placeholder="Enter Book Name"
+                       required>
+
+                <button type="submit" class="btn black">
+                    Search
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- BORROW BOOK -->
+        <div class="card">
+
+            <h2>📖 Borrow Book</h2>
+
+            <a href="/books">
+                <button class="btn green">
+                    Borrow Now
+                </button>
+            </a>
+
+        </div>
+
+        <!-- ISSUED BOOKS -->
+        <div class="card">
+
+            <h2>📕 Issued Books</h2>
+
+            <a href="/books">
+                <button class="btn purple">
+                    View Issued Books
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Book</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#0f2027;
+            background:linear-gradient(to right,#2c5364,#203a43,#0f2027);
+            color:white;
+            padding:50px;
+        }
+
+        .box{
+            width:400px;
+            margin:auto;
+            padding:30px;
+            border-radius:20px;
+            background:rgba(255,255,255,0.1);
+            backdrop-filter:blur(10px);
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:10px;
+            border:none;
+            border-radius:10px;
+        }
+
+        button{
+            margin-top:20px;
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:10px;
+            background:#00cec9;
+            color:white;
+            font-size:18px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="box">
+
+    <h1>Add Book</h1>
+
+    <form th:action="@{/books/save}" method="post" th:object="${book}">
+
+        <input type="text"
+               th:field="*{title}"
+               placeholder="Book Title">
+
+        <input type="text"
+               th:field="*{author}"
+               placeholder="Author">
+
+        <input type="number"
+               step="0.1"
+               th:field="*{price}"
+               placeholder="Price">
+
+        <button type="submit">
+            Save Book
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

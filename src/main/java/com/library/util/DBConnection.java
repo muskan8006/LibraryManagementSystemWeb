@@ -5,24 +5,25 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 
-    private static Connection conn;
+    private static final String URL = "jdbc:postgresql://localhost:5433/librarydb";
+
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "muskan@123";
 
     public static Connection getConnection() {
+
         try {
-            if (conn == null) {
-                Class.forName("org.postgresql.Driver");
+            Class.forName("org.postgresql.Driver");
 
-                conn = DriverManager.getConnection(
-                        "jdbc:postgresql://localhost:5432/library_db",
-                        "postgres",
-                        "muskan@1020");
+            return DriverManager.getConnection(
+                    URL,
+                    USER,
+                    PASSWORD);
 
-                System.out.println("PostgreSQL Connected Successfully!");
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return conn;
+        return null;
     }
 }

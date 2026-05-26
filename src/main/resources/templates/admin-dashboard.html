@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#eef2ff;
+        }
+
+        .navbar{
+            background:#2563eb;
+            color:white;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .navbar h1{
+            font-size:38px;
+        }
+
+        .logout-btn{
+            background:white;
+            color:black;
+            padding:10px 20px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:bold;
+        }
+
+        .container{
+            width:90%;
+            margin:auto;
+            margin-top:40px;
+        }
+
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;
+        }
+
+        .card{
+            background:white;
+            padding:30px;
+            border-radius:25px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h2{
+            margin-bottom:20px;
+            font-size:35px;
+        }
+
+        .btn{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:12px;
+            color:white;
+            font-size:22px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        .blue{
+            background:#2563eb;
+        }
+
+        .green{
+            background:#16a34a;
+        }
+
+        .yellow{
+            background:#eab308;
+            color:black;
+        }
+
+        .red{
+            background:#dc2626;
+        }
+
+        .black{
+            background:#111827;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        .search-box{
+            margin-top:15px;
+        }
+
+        .search-box input{
+            width:100%;
+            padding:15px;
+            border-radius:10px;
+            border:1px solid #ccc;
+            margin-bottom:10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h1>📚 Admin Dashboard</h1>
+
+    <a href="/">
+        <button class="logout-btn">Logout</button>
+    </a>
+</div>
+
+<div class="container">
+
+    <div class="cards">
+
+        <!-- VIEW BOOKS -->
+        <div class="card">
+            <h2>📚 Books</h2>
+
+            <a href="/books">
+                <button class="btn blue">
+                    View Books
+                </button>
+            </a>
+        </div>
+
+        <!-- ADD BOOK -->
+        <div class="card">
+            <h2>➕ Add Book</h2>
+
+            <a href="/books/add">
+                <button class="btn green">
+                    Add New Book
+                </button>
+            </a>
+        </div>
+
+        <!-- EDIT BOOK -->
+        <div class="card">
+            <h2>🖊 Edit Books</h2>
+
+            <a href="/books">
+                <button class="btn yellow">
+                    Edit Book
+                </button>
+            </a>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="card">
+            <h2>🔍 Search Books</h2>
+
+            <form action="/books/search" method="get" class="search-box">
+
+                <input type="text"
+                       name="keyword"
+                       placeholder="Enter book name">
+
+                <button class="btn black" type="submit">
+                    Search
+                </button>
+
+            </form>
+        </div>
+
+        <!-- CHANGE PASSWORD -->
+        <div class="card">
+            <h2>🔐 Change Password</h2>
+
+            <a href="/change-password">
+                <button class="btn red">
+                    Change Password
+                </button>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

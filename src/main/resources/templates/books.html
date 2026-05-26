@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Library Management System</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background: linear-gradient(135deg,#141e30,#243b55);
+            color:white;
+            padding:40px;
+        }
+
+        .container{
+            background: rgba(255,255,255,0.1);
+            padding:30px;
+            border-radius:20px;
+            backdrop-filter: blur(10px);
+            box-shadow:0 0 20px rgba(0,0,0,0.5);
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        a{
+            text-decoration:none;
+            padding:8px 15px;
+            border-radius:10px;
+            color:white;
+        }
+
+        .add{
+            background:#00b894;
+        }
+
+        .edit{
+            background:#0984e3;
+        }
+
+        .delete{
+            background:#d63031;
+        }
+
+        table{
+            width:100%;
+            margin-top:20px;
+            border-collapse:collapse;
+            background:white;
+            color:black;
+        }
+
+        table th, table td{
+            padding:12px;
+            border:1px solid #ccc;
+            text-align:center;
+        }
+
+        input{
+            padding:10px;
+            border:none;
+            border-radius:10px;
+            width:250px;
+        }
+
+        button{
+            padding:10px 20px;
+            border:none;
+            border-radius:10px;
+            background:#6c5ce7;
+            color:white;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Library Management System</h1>
+
+    <br>
+
+    <a class="add" th:href="@{/books/add}">
+        Add Book
+    </a>
+
+    <br><br>
+
+    <form th:action="@{/books/search}" method="get">
+
+        <input type="text" name="keyword" placeholder="Search Book">
+
+        <button type="submit">Search</button>
+
+    </form>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="book : ${books}">
+
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.price}"></td>
+
+            <td>
+
+                <a class="edit"
+                   th:href="@{'/books/edit/' + ${book.id}}">
+                    Edit
+                </a>
+
+                <a class="delete"
+                   th:href="@{'/books/delete/' + ${book.id}}">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
