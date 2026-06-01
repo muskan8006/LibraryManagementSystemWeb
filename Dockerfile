@@ -1,9 +1,7 @@
-FROM eclipse-temurin:17
-
+FROM eclipse-temurin:17-jdk
 WORKDIR /app
-
-COPY target/LibraryManagementSystemWeb-1.0.jar app.jar
-
+COPY . .
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
 EXPOSE 10000
-
-ENTRYPOINT ["java","-jar","app.jar"]
+CMD ["java", "-Dserver.port=10000", "-jar", "target/LibraryManagementSystemWeb-1.0.jar"]
